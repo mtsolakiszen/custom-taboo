@@ -1,0 +1,214 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font: 13px Helvetica, Arial;
+  padding-top: 20px;
+  padding-left: 20%;
+  padding-right: 20%;
+}
+form {
+  padding: 3px;
+  bottom: 0;
+  width: 700px;
+}
+
+p {
+  margin-top: 4px;
+}
+
+.app-header {
+  width: 700px;
+}
+
+.messages {
+  border-top: 1px solid black;
+  padding-top: 10px;
+  height: 20vh;
+  width: 700px;
+  overflow: scroll;
+}
+
+.game {
+  height: 48vh;
+  width: 700px;
+  display: inline-block;
+}
+
+.playerRed {
+  color: red;
+}
+
+.playerBlue {
+  color: blue;
+}
+
+.tiles {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.pictures-tile {
+  width: 100px;
+  height: 50px;
+  margin: 10px;
+  box-shadow: 2px 2px lightgrey;
+  border: 2px solid lightgrey;
+  cursor: pointer;
+  font-size: xx-large;
+  padding-top: 5px;
+  padding-left: 30px;
+}
+
+.words-tile {
+  width: 100px;
+  height: 50px;
+  margin: 10px;
+  box-shadow: 2px 2px lightgrey;
+  border: 2px solid lightgrey;
+  cursor: pointer;
+  padding-top: 14px;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 1.2em;
+}
+
+.players {
+  display: flex;
+  padding-top: 5px;
+  padding-bottom: 10px;
+  width: 700px;
+}
+
+.players button {
+  margin-left: 20px;
+}
+
+.turn-display {
+  background-color: white;
+  padding: 10px;
+  width: 300px;
+  border: 2px solid;
+  border-color: black;
+  box-shadow: 2px 2px;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.turn-display button {
+  display: block;
+  margin-left: calc(50% - 45px);
+  margin-top: 10px;
+}
+
+.red-team {
+  margin-right: 30px;
+}
+
+.red-team h3 {
+  color: red;
+}
+
+.blue-team h3 {
+  color: blue;
+}
+
+.redTile {
+  border-color: red;
+  background: rgba(255, 0, 0, 0.2)
+}
+
+.blueTile {
+  border-color: blue;
+  background: rgba(0, 0, 255, 0.2)
+}
+
+.assassinTile {
+  border-color: black;
+  background: rgba(0,0,0, 0.4)
+}
+
+.revealedTile {
+  font-size: 0;
+}
+
+.red-text {
+  color: red;
+}
+
+.blue-text {
+  color: blue;
+}
+
+.turn-text {
+  font-size: 1.5em;
+  text-align: center;
+}
+
+.waiting-text {
+  text-align: center;
+  font-size: 1.2em;
+  margin-top: 10px;
+}
+
+.clue-form {
+  width: 100%;
+  height: 125px;
+}
+
+.clue-form label {
+  font-size: 1.2em;
+  display: inline-block;
+  padding: 10px;
+}
+
+.clue-form input {
+  width: 40%;
+  float: right;
+}
+
+.turn-details {
+  font-size: 1.2em;
+  padding: 5px;
+  text-align: center;
+}
+
+.chat-message {
+  white-space: pre-line;
+}
+
+.chat-message-red::first-line {
+  color: red;
+}
+
+.chat-message-blue::first-line {
+  color: blue;
+}
+
+.chat-message::first-line {
+  font-weight: 700;
+}
+
+.new-messages {
+  text-decoration: underline;
+  color: darkslategray;
+  font-style: italic;
+  cursor: pointer;
+}
+
+.new-messages:hover {
+  font-weight: 600;
+}
+
+.chat-area {
+  float: left;
+  border: 1px solid black;
+  padding: 10px;
+  width: 85%;
+  max-width: 85%;
+  margin-right: .5%;
+  margin-bottom: 50px;
+}
+
+.chat-submit {
+  float: right;
+}
