@@ -37,14 +37,23 @@ class Taboo extends React.Component {
     return (
       <div className="game">
         <div className="tiles" style={{fontSize: '25px'}}>
-          <div style={{display: 'block', width: '100%'}}><b>Word:</b> { currentCard['word'] }</div>
-          <div style={{display: 'block'}}>
-          <b>Taboo:</b>
-          <div>
-          {
-            currentCard['taboo'].map((tabooWord) => <span style={{display: 'block'}} key={tabooWord}>{tabooWord}</span>)
-          }
+          <div style={{ display: 'table-row'}}>
+            <div style={{ display: 'table-cell'}}><b>Word:</b></div>
+            <div style={{ display: 'table-cell'}}>{ currentCard['word'] }</div>
           </div>
+          <div style={{ display: 'table-row', height: '20px'}}>
+            <div style={{ display: 'table-cell', borderBottom: '1px solid', borderTop: '1px solid', width: '100px'}}></div>
+            <div style={{ display: 'table-cell', borderBottom: '1px solid', borderTop: '1px solid'}}></div>
+          </div>
+          <div style={{ display: 'table-row'}}>
+            <div style={{ display: 'table-cell'}}> <b>Taboo:</b></div>
+            <div style={{ display: 'table-cell'}}>
+              <div>
+              {
+                currentCard['taboo'].map((tabooWord) => <span style={{display: 'block'}} key={tabooWord}>{tabooWord}</span>)
+              }
+              </div>
+            </div>
           </div>
         </div>
       </div>

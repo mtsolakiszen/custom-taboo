@@ -42,8 +42,12 @@ p {
 }
 
 .tiles {
+  padding: 20px;
   display: flex;
   flex-wrap: wrap;
+  display: table;
+  margin: 50px auto;
+  border: 1px solid;
 }
 
 .pictures-tile {

@@ -38,8 +38,8 @@ const CurrentPlayerDisplay = ({
   endTurn,
 }) => (
   <div>
-    <button onClick={nextCard}>Next Card</button>
-    <button onClick={endTurn}>End turn</button>
+    <Button onClick={nextCard}>Next Card</Button>
+    <Button onClick={endTurn}>End turn</Button>
   </div>
 );
 
