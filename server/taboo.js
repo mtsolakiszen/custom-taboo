@@ -55,6 +55,21 @@ class TabooGame {
     }
   }
 
+  changeTeam(player) {
+    const redPlayerIndex = this.redPlayers.indexOf(player);
+    const bluePlayerIndex = this.bluePlayers.indexOf(player);
+
+    if (redPlayerIndex >= 0) {
+      if(this.redLeader == player) { this.redLeader = null; }
+      this.redPlayers.splice(redPlayerIndex, 1);
+      this.bluePlayers = this.bluePlayers.concat(player);
+    } else if (bluePlayerIndex >= 0) {
+      if(this.blueLeader == player) { this.blueLeader = null; }
+      this.bluePlayers.splice(bluePlayerIndex, 1);
+      this.redPlayers = this.redPlayers.concat(player);
+    }
+  }
+
   endTurn() {
     this.turn = new Turn();
     this.currentTurn = this.currentTurn === 'red' ? 'blue' : 'red';

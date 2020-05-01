@@ -15,10 +15,6 @@ p {
   margin-top: 4px;
 }
 
-.app-header {
-  width: 700px;
-}
-
 .messages {
   border-top: 1px solid black;
   padding-top: 10px;
@@ -28,9 +24,9 @@ p {
 }
 
 .game {
-  height: 48vh;
-  width: 700px;
-  display: inline-block;
+  width: 400px;
+  height: 300px;
+  float: left;
 }
 
 .playerRed {
@@ -93,9 +89,8 @@ p {
   border: 2px solid;
   border-color: black;
   box-shadow: 2px 2px;
-  position: absolute;
-  top: 20px;
-  right: 20px;
+  float: left;
+  margin: 50px;
 }
 
 .turn-display button {

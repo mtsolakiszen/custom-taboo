@@ -61,6 +61,12 @@ io.on('connection', (socket) => {
     emitGameUpdate();
   });
 
+  socket.on('changeTeam', () => {
+    if (!currentGame) { return; }
+    currentGame.changeTeam(socket.id);
+    emitGameUpdate();
+  });
+
   socket.on('chooseTile', (msg) => {
     if (!currentGame) { return; }
     const success = currentGame.chooseTile(msg, socket.id);

@@ -70,6 +70,11 @@ class App extends React.Component {
     window.socket.emit('chooseLeader', player);
   }
 
+  changeTeam(player) {
+    console.log('changing teams', player);
+    window.socket.emit('changeTeam', player);
+  }
+
   render() {
     const { roomName, socketId } = this.props;
     const {
@@ -92,11 +97,13 @@ class App extends React.Component {
 
     return (
       <ThemeProvider theme={{ ...DEFAULT_THEME }}>
-        <AppHeader gameState={gameState} socketId={socketId} roomName={roomName} usernames={this.state.usernames} />
-        <Taboo gameState={gameState} />
-        <TurnDisplay gameState={gameState} nextCard={this.nextCard.bind(this)} endTurn={this.endTurn.bind(this)} startTimer={this.startTimer.bind(this)} clearTimer={this.clearTimer.bind(this)}/>
+        <AppHeader gameState={gameState} socketId={socketId} roomName={roomName} usernames={this.state.usernames} changeTeam={this.changeTeam.bind(this)} />
+        <div>
+          <Taboo gameState={gameState} />
+          <TurnDisplay gameState={gameState} nextCard={this.nextCard.bind(this)} endTurn={this.endTurn.bind(this)} startTimer={this.startTimer.bind(this)} clearTimer={this.clearTimer.bind(this)}/>
+        </div>
         <TeamDisplay gameState={gameState} chooseLeader={this.chooseLeader.bind(this)} usernames={this.state.usernames} />
-        <ChatPanel messages={messages} sendMessage={this.sendMessage.bind(this)} gameState={gameState} />
+        <ChatPanel messages={messages} sendMessage={this.sendMessage.bind(this)}  gameState={gameState} />
       </ThemeProvider>
     );
   }

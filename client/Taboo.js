@@ -24,12 +24,11 @@ class Taboo extends React.Component {
 
     const guessStyle = {
       fontSize: '50px',
-      margin: '0 auto',
-      height: '200px',
-      width: '100%',
+      margin: '50px 0 auto',
+      width: '400px',
       textAlign: 'center',
       marginTop: '50px',
-      fontSize: '50px'
+      float: 'left'
     };
 
     if(playersTurn && !isLeader) { return <div style={guessStyle}>Guess!</div>}
