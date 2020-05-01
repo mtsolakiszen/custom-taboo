@@ -1,6 +1,4 @@
 const shuffle = require('shuffle-array');
-const _ = require('lodash');
-const atob = require('atob');
 const cards = Object.values(require('./tabooCards'));
 const Turn = require('./turn.js').default;
 
@@ -17,6 +15,7 @@ class TabooGame {
     this.blueLeader = undefined;
     this.playing = false;
     this.winner = undefined;
+    this.finishTime = 0;
     this.currentTurn = 'red'; // red goes first
     this.turn = new Turn();
   }
@@ -66,6 +65,15 @@ class TabooGame {
     this.currentTurn = this.currentTurn === 'red' ? 'blue' : 'red';
   }
 
+  startTimer(time) {
+    console.log(time)
+    this.finishTime = time + (60000 * 2);
+  }
+
+  clearTimer() {
+    this.finishTime = 0;
+  }
+
   nextCard() {
     this.cardPosition += 1;
   }
@@ -90,7 +98,8 @@ class TabooGame {
       blueLeader: this.blueLeader,
       playing: this.playing,
       winner: this.winner,
-      turn: this.turn
+      turn: this.turn,
+      finishTime: this.finishTime
     };
 
     // // leaders see all tiles revealed; everyone else only sees picked ones

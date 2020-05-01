@@ -1,11 +1,14 @@
 import React from 'react';
 import { Button } from '@zendeskgarden/react-buttons';
+import Timer from './Timer';
 
 const TurnDisplay = ({
   endTurn,
   nextCard,
+  startTimer,
+  clearTimer,
   gameState: {
-    playing, redPlayers, redLeader, blueLeader, currentTurn,
+    playing, redPlayers, redLeader, blueLeader, currentTurn, finishTime,
   },
 }) => {
   if (!playing) { return null; }
@@ -23,6 +26,7 @@ const TurnDisplay = ({
         {' '}
         <span className={`${currentTurn}-text`}>{currentTurn}</span>
       </p>
+      <Timer start={startTimer} clear={clearTimer} finishTime={finishTime} />
       { playersTurn && isLeader && (
         <CurrentPlayerDisplay
           endTurn={() => endTurn(playerId)}

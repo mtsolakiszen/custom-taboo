@@ -51,8 +51,18 @@ class App extends React.Component {
   }
 
   nextCard(player) {
-    console.log('ending turn', player);
+    console.log('changing card', player);
     window.socket.emit('nextCard');
+  }
+
+  startTimer(player) {
+    console.log('starting timer', player);
+    window.socket.emit('startTimer', new Date().getTime());
+  }
+
+  clearTimer(player) {
+    console.log('clearing timer', player);
+    window.socket.emit('clearTimer');
   }
 
   chooseLeader(player) {
@@ -78,12 +88,13 @@ class App extends React.Component {
         </div>
       );
     }
+    console.log(gameState);
 
     return (
       <ThemeProvider theme={{ ...DEFAULT_THEME }}>
         <AppHeader gameState={gameState} socketId={socketId} roomName={roomName} usernames={this.state.usernames} />
         <Taboo gameState={gameState} />
-        <TurnDisplay gameState={gameState} nextCard={this.nextCard.bind(this)} endTurn={this.endTurn.bind(this)} />
+        <TurnDisplay gameState={gameState} nextCard={this.nextCard.bind(this)} endTurn={this.endTurn.bind(this)} startTimer={this.startTimer.bind(this)} clearTimer={this.clearTimer.bind(this)}/>
         <TeamDisplay gameState={gameState} chooseLeader={this.chooseLeader.bind(this)} usernames={this.state.usernames} />
         <ChatPanel messages={messages} sendMessage={this.sendMessage.bind(this)} gameState={gameState} />
       </ThemeProvider>

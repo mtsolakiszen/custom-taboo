@@ -99,8 +99,8 @@ p {
 }
 
 .turn-display button {
-  display: block;
-  margin-left: calc(50% - 45px);
+  display: inline-block;
+  margin-left: 5px;
   margin-top: 10px;
 }
 

@@ -88,6 +88,24 @@ io.on('connection', (socket) => {
     emitGameUpdate();
   });
 
+  socket.on('startTimer', (time) => {
+    if (!currentGame) { return; }
+    const success = currentGame.startTimer(time, socket.id);
+
+    const user = userMapping[socket.id] || socket.id;
+    if (success) { io.to(roomName).emit('chat message', `${user} started the timer`, currentGame.getPlayerColor(socket.id)); }
+    emitGameUpdate();
+  });
+
+  socket.on('clearTimer', () => {
+    if (!currentGame) { return; }
+    const success = currentGame.clearTimer(socket.id);
+
+    const user = userMapping[socket.id] || socket.id;
+    if (success) { io.to(roomName).emit('chat message', `${user} cleared the timer`, currentGame.getPlayerColor(socket.id)); }
+    emitGameUpdate();
+  });
+
   socket.on('submitClue', (clue, guesses) => {
     if (!currentGame) { return; }
     currentGame.submitClue(clue, guesses, socket.id);
