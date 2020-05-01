@@ -45,13 +45,9 @@ class TabooGame {
 
   assignLeader(player) {
     if (this.redPlayers.indexOf(player) >= 0) {
-      if (!this.redLeader) {
-        this.redLeader = player;
-      }
+      this.redLeader = player;
     } else if (this.bluePlayers.indexOf(player) >= 0) {
-      if (!this.blueLeader) {
-        this.blueLeader = player;
-      }
+      this.blueLeader = player;
     }
 
     if (!this.winner && this.redLeader && this.blueLeader && this.redPlayers.length > 1 && this.bluePlayers.length > 1) {
