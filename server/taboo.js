@@ -44,7 +44,6 @@ class TabooGame {
   }
 
   assignLeader(player) {
-    if (this.winner || this.playing) { return; }
     if (this.redPlayers.indexOf(player) >= 0) {
       if (!this.redLeader) {
         this.redLeader = player;
