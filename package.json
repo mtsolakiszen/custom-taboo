@@ -1,10 +1,10 @@
 {
-  "name": "custom-codenames",
+  "name": "custom-taboo",
   "version": "1.0.0",
-  "description": "Play Codenames online",
+  "description": "Play Taboo online",
   "main": "server.js",
-  "repository": "git@github.com:sgoedecke/custom-codenames.git",
-  "author": "Sean Goedecke <sgoedecke@zendesk.com>",
+  "repository": "git@github.com:mtsolakiszen/custom-taboo.git",
+  "author": "Michael Tsolakis <mtsolakis@zendesk.com>",
   "license": "MIT",
   "private": false,
   "dependencies": {

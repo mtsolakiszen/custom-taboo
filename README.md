@@ -1,6 +1,6 @@
-# Custom Codenames
+# Custom Taboo
 
-Play Codenames online with custom tiles! Under development.
+Play Taboo online! Under development.
 
 ## Development
 
@@ -14,7 +14,4 @@ Run `yarn lint` to autofix linting errors.
 
 ## Usage
 
-https://custom-codenames.herokuapp.com/
-
-![Screenshot](./screenshot.png)
-
+https://custom-taboo.herokuapp.com/

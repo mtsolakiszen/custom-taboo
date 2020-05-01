@@ -8,7 +8,7 @@ class TabooGame {
   constructor() {
     // generate a list of 25 tiles. we don't need to track order, just
     // remember which words belong to which team and sort it out at runtime.
-    this.cards = cards;
+    this.cards = shuffle(cards);
     this.cardPosition = 0;
 
     this.redPlayers = [];

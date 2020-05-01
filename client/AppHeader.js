@@ -28,7 +28,7 @@ const AppHeader = ({
           )
             : (
               <XXXL>
-                Codenames
+                Taboo!
               </XXXL>
             ) }
 
