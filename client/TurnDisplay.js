@@ -5,6 +5,8 @@ import Timer from './Timer';
 const TurnDisplay = ({
   endTurn,
   nextCard,
+  failCard,
+  scoreCard,
   startTimer,
   clearTimer,
   gameState: {
@@ -31,6 +33,8 @@ const TurnDisplay = ({
         <CurrentPlayerDisplay
           endTurn={() => endTurn(playerId)}
           nextCard={() => nextCard(playerId)}
+          failCard={() => failCard(playerId)}
+          scoreCard={() => scoreCard(playerId)}
         />
       )}
     </div>
@@ -40,9 +44,14 @@ const TurnDisplay = ({
 const CurrentPlayerDisplay = ({
   nextCard,
   endTurn,
+  failCard,
+  scoreCard
 }) => (
   <div>
-    <Button onClick={nextCard}>Next Card</Button>
+    <Button onClick={nextCard}>Skip card</Button>
+    <Button onClick={failCard}>Taboo!</Button>
+    <Button onClick={scoreCard}>Score card</Button>
+
     <Button onClick={endTurn}>End turn</Button>
   </div>
 );

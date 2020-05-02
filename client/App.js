@@ -12,7 +12,6 @@ class App extends React.Component {
     super(props);
     this.state = {
       messages: [],
-      tiles: [],
       usernames: {},
       gameState: {},
     };
@@ -53,6 +52,16 @@ class App extends React.Component {
   nextCard(player) {
     console.log('changing card', player);
     window.socket.emit('nextCard');
+  }
+
+  scoreCard(player) {
+    console.log('scoring card', player);
+    window.socket.emit('scoreCard');
+  }
+
+  failCard(player) {
+    console.log('failed card', player);
+    window.socket.emit('failCard');
   }
 
   startTimer(player) {
@@ -100,7 +109,7 @@ class App extends React.Component {
         <AppHeader gameState={gameState} socketId={socketId} roomName={roomName} usernames={this.state.usernames} changeTeam={this.changeTeam.bind(this)} />
         <div>
           <Taboo gameState={gameState} />
-          <TurnDisplay gameState={gameState} nextCard={this.nextCard.bind(this)} endTurn={this.endTurn.bind(this)} startTimer={this.startTimer.bind(this)} clearTimer={this.clearTimer.bind(this)}/>
+          <TurnDisplay gameState={gameState} scoreCard={this.scoreCard.bind(this)} failCard={this.failCard.bind(this)} nextCard={this.nextCard.bind(this)} endTurn={this.endTurn.bind(this)} startTimer={this.startTimer.bind(this)} clearTimer={this.clearTimer.bind(this)}/>
         </div>
         <TeamDisplay gameState={gameState} chooseLeader={this.chooseLeader.bind(this)} usernames={this.state.usernames} />
         <ChatPanel messages={messages} sendMessage={this.sendMessage.bind(this)}  gameState={gameState} />

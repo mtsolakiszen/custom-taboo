@@ -4,7 +4,7 @@ import { Button } from '@zendeskgarden/react-buttons';
 const TeamDisplay = ({
   usernames,
   gameState: {
-    redPlayers, bluePlayers, redLeader, blueLeader, currentTurn
+    redPlayers, bluePlayers, redLeader, blueLeader, currentTurn, scores
   }, chooseLeader,
 }) => {
   if (!redPlayers) { return null; } // TODO: add default props above and remove these checks
@@ -28,11 +28,11 @@ const TeamDisplay = ({
   return (
     <div className="players">
       <div className="red-team">
-        <h3>Red team:</h3>
+        <h3>Red team ({ scores.red }):</h3>
         { listPlayers(redPlayers) }
       </div>
       <div className="blue-team">
-        <h3>Blue team:</h3>
+        <h3>Blue team ({scores.blue}):</h3>
         { listPlayers(bluePlayers) }
       </div>
       { ((!isLeader && (!redLeader || !playersTurn) && redPlayers.indexOf(playerId) >= 0) || (!isLeader && (!blueLeader || !playersTurn) && bluePlayers.indexOf(playerId) >= 0))
