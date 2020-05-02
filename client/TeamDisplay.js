@@ -27,17 +27,19 @@ const TeamDisplay = ({
 
   return (
     <div className="players">
-      <div className="red-team">
-        <h3>Red team ({ scores.red }):</h3>
-        { listPlayers(redPlayers) }
-      </div>
-      <div className="blue-team">
-        <h3>Blue team ({scores.blue}):</h3>
-        { listPlayers(bluePlayers) }
-      </div>
       { ((!isLeader && (!redLeader || !playersTurn) && redPlayers.indexOf(playerId) >= 0) || (!isLeader && (!blueLeader || !playersTurn) && bluePlayers.indexOf(playerId) >= 0))
-        && <Button onClick={() => { chooseLeader(playerId); }}>Become the clue-giver!</Button>}
-    </div>
+          && <Button onClick={() => { chooseLeader(playerId); }}>Become the clue-giver!</Button>}
+          <div className='teams'>
+            <div className="red-team">
+              <h3>Red team ({ scores.red }):</h3>
+              { listPlayers(redPlayers) }
+            </div>
+            <div className="blue-team">
+              <h3>Blue team ({scores.blue}):</h3>
+              { listPlayers(bluePlayers) }
+            </div>
+          </div>
+        </div>
   );
 };
 

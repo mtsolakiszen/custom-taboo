@@ -34,10 +34,6 @@ class App extends React.Component {
     });
   }
 
-  sendMessage(msg) {
-    window.socket.emit('chat message', msg);
-  }
-
   // request a new copy of the state from the server. called after the
   // component loads
   syncState() {
@@ -107,12 +103,12 @@ class App extends React.Component {
     return (
       <ThemeProvider theme={{ ...DEFAULT_THEME }}>
         <AppHeader gameState={gameState} socketId={socketId} roomName={roomName} usernames={this.state.usernames} changeTeam={this.changeTeam.bind(this)} />
-        <div>
+        <div className='content'>
           <Taboo gameState={gameState} />
           <TurnDisplay gameState={gameState} scoreCard={this.scoreCard.bind(this)} failCard={this.failCard.bind(this)} nextCard={this.nextCard.bind(this)} endTurn={this.endTurn.bind(this)} startTimer={this.startTimer.bind(this)} clearTimer={this.clearTimer.bind(this)}/>
         </div>
         <TeamDisplay gameState={gameState} chooseLeader={this.chooseLeader.bind(this)} usernames={this.state.usernames} />
-        <ChatPanel messages={messages} sendMessage={this.sendMessage.bind(this)}  gameState={gameState} />
+        <ChatPanel messages={messages} gameState={gameState} />
       </ThemeProvider>
     );
   }

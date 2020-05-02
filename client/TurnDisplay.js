@@ -49,7 +49,7 @@ const CurrentPlayerDisplay = ({
 }) => (
   <div>
     <Button onClick={nextCard}>Skip card</Button>
-    <Button onClick={failCard}>Taboo!</Button>
+    <Button onClick={failCard}>Taboo!</Button> {/* TODO: red */}
     <Button onClick={scoreCard}>Score card</Button>
 
     <Button onClick={endTurn}>End turn</Button>

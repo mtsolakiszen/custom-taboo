@@ -2,13 +2,8 @@
 body {
   font: 13px Helvetica, Arial;
   padding-top: 20px;
-  padding-left: 20%;
-  padding-right: 20%;
-}
-form {
-  padding: 3px;
-  bottom: 0;
-  width: 700px;
+  padding-left: 5%;
+  padding-right: 5%;
 }
 
 p {
@@ -17,16 +12,24 @@ p {
 
 .messages {
   border-top: 1px solid black;
-  padding-top: 10px;
-  height: 20vh;
-  width: 700px;
+  margin-top: 10px;
+  height: 5vh;
   overflow: scroll;
 }
 
+.content {
+  display: flex;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  min-height: 30vh;
+}
+
 .game {
-  width: 400px;
-  height: 300px;
-  float: left;
+  padding: 10px;
+  margin: auto;
+  border: 2px solid;
+  border-color: black;
+  box-shadow: 2px 2px;
 }
 
 .playerRed {
@@ -37,45 +40,16 @@ p {
   color: blue;
 }
 
-.tiles {
-  padding: 20px;
+.teams {
   display: flex;
-  flex-wrap: wrap;
-  display: table;
-  margin: 50px auto;
-  border: 1px solid;
-}
-
-.pictures-tile {
-  width: 100px;
-  height: 50px;
-  margin: 10px;
-  box-shadow: 2px 2px lightgrey;
-  border: 2px solid lightgrey;
-  cursor: pointer;
-  font-size: xx-large;
-  padding-top: 5px;
-  padding-left: 30px;
-}
-
-.words-tile {
-  width: 100px;
-  height: 50px;
-  margin: 10px;
-  box-shadow: 2px 2px lightgrey;
-  border: 2px solid lightgrey;
-  cursor: pointer;
-  padding-top: 14px;
-  text-align: center;
-  vertical-align: middle;
-  font-size: 1.2em;
+  margin-top: 10px;
 }
 
 .players {
   display: flex;
+  flex-direction: column;
   padding-top: 5px;
   padding-bottom: 10px;
-  width: 700px;
 }
 
 .players button {
@@ -89,8 +63,7 @@ p {
   border: 2px solid;
   border-color: black;
   box-shadow: 2px 2px;
-  float: left;
-  margin: 50px;
+  margin: auto;
 }
 
 .turn-display button {
@@ -100,8 +73,13 @@ p {
 }
 
 .red-team {
-  margin-right: 30px;
+  margin: auto;
 }
+
+.blue-team {
+  margin: auto;
+}
+
 
 .red-team h3 {
   color: red;
