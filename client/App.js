@@ -14,6 +14,7 @@ class App extends React.Component {
       messages: [],
       usernames: {},
       gameState: {},
+      timerActive: false
     };
   }
 
@@ -63,11 +64,13 @@ class App extends React.Component {
   startTimer(player) {
     console.log('starting timer', player);
     window.socket.emit('startTimer', new Date().getTime());
+    this.setState({ timerActive: true })
   }
 
   clearTimer(player) {
     console.log('clearing timer', player);
     window.socket.emit('clearTimer');
+    this.setState({ timerActive: false })
   }
 
   chooseLeader(player) {
@@ -105,7 +108,14 @@ class App extends React.Component {
         <AppHeader gameState={gameState} socketId={socketId} roomName={roomName} usernames={this.state.usernames} changeTeam={this.changeTeam.bind(this)} />
         <div className='content'>
           <Taboo gameState={gameState} />
-          <TurnDisplay gameState={gameState} scoreCard={this.scoreCard.bind(this)} failCard={this.failCard.bind(this)} nextCard={this.nextCard.bind(this)} endTurn={this.endTurn.bind(this)} startTimer={this.startTimer.bind(this)} clearTimer={this.clearTimer.bind(this)}/>
+          <TurnDisplay timerActive={this.state.timerActive}
+            gameState={gameState}
+            scoreCard={this.scoreCard.bind(this)}
+            failCard={this.failCard.bind(this)}
+            nextCard={this.nextCard.bind(this)}
+            endTurn={this.endTurn.bind(this)}
+            startTimer={this.startTimer.bind(this)}
+            clearTimer={this.clearTimer.bind(this)} />
         </div>
         <TeamDisplay gameState={gameState} chooseLeader={this.chooseLeader.bind(this)} usernames={this.state.usernames} />
         <ChatPanel messages={messages} gameState={gameState} />

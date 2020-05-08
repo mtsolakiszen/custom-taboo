@@ -2,6 +2,8 @@ import React from 'react';
 import { Button } from '@zendeskgarden/react-buttons';
 import { resetWarningCache } from 'prop-types';
 
+const TIMER_FINISHED_TEXT = 'TIMER FINISHED'
+
 const Timer = ({
   finishTime,
   start,
@@ -30,17 +32,17 @@ const Timer = ({
   // If the count down is finished, write some text
   if (distance < 0) {
     clearInterval(window.timerInterval);
-    document.getElementById("timer").innerHTML = 'TIMER FINISHED';
+    document.getElementById("timer").innerHTML = TIMER_FINISHED_TEXT;
   }
 }, 1000);
 
 var reset = () => {
   clearInterval(window.timerInterval);
-  document.getElementById("timer").innerHTML = 'TIMER FINISHED';
+  document.getElementById("timer").innerHTML = TIMER_FINISHED_TEXT;
 };
 
   return (
-    <div>
+    <div className='timer'>
       <div id='timer' style={{fontSize: '25px', textAlign: 'center', marginTop: '15px'}}></div>
       <Button onClick={start}>Start Timer</Button>
       <Button onClick={() => { clear(); reset() }}>Clear Timer</Button>

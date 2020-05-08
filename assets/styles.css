@@ -13,12 +13,13 @@ p {
 .messages {
   border-top: 1px solid black;
   margin-top: 10px;
-  height: 5vh;
+  height: 15vh;
   overflow: scroll;
 }
 
 .content {
   display: flex;
+  flex-direction: column;
   margin-top: 10px;
   margin-bottom: 10px;
   min-height: 30vh;
@@ -59,10 +60,6 @@ p {
 .turn-display {
   background-color: white;
   padding: 10px;
-  width: 300px;
-  border: 2px solid;
-  border-color: black;
-  box-shadow: 2px 2px;
   margin: auto;
 }
 
@@ -188,4 +185,9 @@ p {
 
 .chat-submit {
   float: right;
+}
+
+.timer {
+  display: flex;
+  flex-direction: column;
 }

@@ -9,6 +9,7 @@ const TurnDisplay = ({
   scoreCard,
   startTimer,
   clearTimer,
+  timerActive,
   gameState: {
     playing, redPlayers, redLeader, blueLeader, currentTurn, finishTime,
   },
@@ -31,6 +32,7 @@ const TurnDisplay = ({
       <Timer start={startTimer} clear={clearTimer} finishTime={finishTime} />
       { playersTurn && isLeader && (
         <CurrentPlayerDisplay
+          timerActive={timerActive}
           endTurn={() => endTurn(playerId)}
           nextCard={() => nextCard(playerId)}
           failCard={() => failCard(playerId)}
@@ -45,12 +47,13 @@ const CurrentPlayerDisplay = ({
   nextCard,
   endTurn,
   failCard,
-  scoreCard
+  scoreCard,
+  timerActive
 }) => (
   <div>
-    <Button onClick={nextCard}>Skip card</Button>
-    <Button onClick={failCard}>Taboo!</Button> {/* TODO: red */}
-    <Button onClick={scoreCard}>Score card</Button>
+    <Button disabled={!timerActive} onClick={nextCard}>Skip card</Button>
+    <Button disabled={!timerActive} onClick={failCard}>Taboo!</Button> {/* TODO: red */}
+    <Button disabled={!timerActive} onClick={scoreCard}>Score card</Button>
 
     <Button onClick={endTurn}>End turn</Button>
   </div>
