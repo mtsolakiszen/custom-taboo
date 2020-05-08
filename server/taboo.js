@@ -4,8 +4,6 @@ const Turn = require('./turn.js').default;
 
 class TabooGame {
   constructor() {
-    // generate a list of 25 tiles. we don't need to track order, just
-    // remember which words belong to which team and sort it out at runtime.
     this.cards = shuffle(cards);
     this.cardPosition = 0;
 
@@ -15,6 +13,7 @@ class TabooGame {
     this.blueLeader = undefined;
     this.playing = false;
     this.winner = undefined;
+    this.scores = { blue: 0, red: 0 }
     this.finishTime = 0;
     this.currentTurn = 'red'; // red goes first
     this.turn = new Turn();
@@ -88,6 +87,16 @@ class TabooGame {
     this.cardPosition += 1;
   }
 
+  scoreCard() {
+    this.scores[this.currentTurn] += 1
+    this.nextCard()
+  }
+
+  failCard() {
+    this.scores[this.currentTurn] -= 1
+    this.nextCard()
+  }
+
   getPlayerColor(player) {
     if (this.redPlayers.indexOf(player) >= 0) {
       return 'red';
@@ -102,6 +111,7 @@ class TabooGame {
     const output = {
       currentCard: this.cards[this.cardPosition],
       currentTurn: this.currentTurn,
+      scores: this.scores,
       redPlayers: this.redPlayers,
       bluePlayers: this.bluePlayers,
       redLeader: this.redLeader,
@@ -111,17 +121,6 @@ class TabooGame {
       turn: this.turn,
       finishTime: this.finishTime
     };
-
-    // // leaders see all tiles revealed; everyone else only sees picked ones
-    // if (player === this.redLeader || player === this.blueLeader) {
-    //   output.redTiles = this.redTiles;
-    //   output.blueTiles = this.blueTiles;
-    //   output.assassinTile = this.assassinTile;
-    // } else {
-    //   output.redTiles = this.redTiles.filter((t) => this.revealedTiles.indexOf(t) >= 0);
-    //   output.blueTiles = this.blueTiles.filter((t) => this.revealedTiles.indexOf(t) >= 0);
-    //   output.assassinTile = this.revealedTiles.indexOf(this.assassinTile) >= 0 ? this.assassinTile : undefined;
-    // }
 
     return output;
   }

@@ -67,30 +67,39 @@ io.on('connection', (socket) => {
     emitGameUpdate();
   });
 
-  socket.on('chooseTile', (msg) => {
-    if (!currentGame) { return; }
-    const success = currentGame.chooseTile(msg, socket.id);
-
-    const user = userMapping[socket.id] || socket.id;
-    if (success) { io.to(roomName).emit('chat message', `${user} chose tile ${msg}`, currentGame.getPlayerColor(socket.id)); }
-    emitGameUpdate();
-  });
-
   socket.on('endTurn', () => {
     if (!currentGame) { return; }
-    const success = currentGame.endTurn(socket.id);
+    currentGame.endTurn(socket.id);
 
     const user = userMapping[socket.id] || socket.id;
-    if (success) { io.to(roomName).emit('chat message', `${user} ended the turn`, currentGame.getPlayerColor(socket.id)); }
+    io.to(roomName).emit('chat message', `${user} ended the turn`, currentGame.getPlayerColor(socket.id));
     emitGameUpdate();
   });
 
   socket.on('nextCard', () => {
     if (!currentGame) { return; }
-    const success = currentGame.nextCard(socket.id);
+    currentGame.nextCard(socket.id);
 
     const user = userMapping[socket.id] || socket.id;
-    if (success) { io.to(roomName).emit('chat message', `${user} got a new card`, currentGame.getPlayerColor(socket.id)); }
+    io.to(roomName).emit('chat message', `${user} got a new card`, currentGame.getPlayerColor(socket.id));
+    emitGameUpdate();
+  });
+
+  socket.on('failCard', () => {
+    if (!currentGame) { return; }
+    currentGame.failCard(socket.id);
+
+    const user = userMapping[socket.id] || socket.id;
+    io.to(roomName).emit('chat message', `${user} used a taboo word`, currentGame.getPlayerColor(socket.id));
+    emitGameUpdate();
+  });
+
+  socket.on('scoreCard', () => {
+    if (!currentGame) { return; }
+    currentGame.scoreCard(socket.id);
+
+    const user = userMapping[socket.id] || socket.id;
+    io.to(roomName).emit('chat message', `${user}'s team guessed a card`, currentGame.getPlayerColor(socket.id));
     emitGameUpdate();
   });
 

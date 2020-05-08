@@ -5,16 +5,8 @@ class ChatPanel extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      draftMessage: '',
       newMessages: false,
     };
-  }
-
-  keyDown(e) {
-    if (e.keyCode === 13 && !e.shiftKey) {
-      e.preventDefault();
-      document.forms.chat.requestSubmit();
-    }
   }
 
   scrollToBottom(force) {
@@ -44,7 +36,7 @@ class ChatPanel extends React.Component {
 
   // TODO: scrolling messages
   render() {
-    const { messages, sendMessage } = this.props;
+    const { messages } = this.props;
     const { newMessages } = this.state;
     return (
       <div>
@@ -53,21 +45,6 @@ class ChatPanel extends React.Component {
             <p className={`chat-message chat-message-${m.color}`} key={i}>{m.message}</p>))}
         </div>
         { newMessages && <span className="new-messages" onClick={() => this.scrollToBottom(true)}>New messages</span> }
-        <form
-          id="chat"
-          action=""
-          onSubmit={(e) => {
-            e.preventDefault();
-            if (this.state.draftMessage !== '') {
-              sendMessage(this.state.draftMessage);
-            }
-            this.setState({ draftMessage: '' });
-            return false;
-          }}
-        >
-          <textarea className="chat-area" onChange={(e) => { this.setState({ draftMessage: e.target.value }); }} value={this.state.draftMessage} onKeyDown={this.keyDown} />
-          <Button className="chat-submit">Send</Button>
-        </form>
       </div>
     );
   }
