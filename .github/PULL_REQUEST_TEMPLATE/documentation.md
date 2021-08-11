@@ -1,5 +1,5 @@
 ---
-labels: documentation
+labels: "documentation"
 ---
 🐕
 
