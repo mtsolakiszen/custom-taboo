@@ -5,7 +5,7 @@ import ChatPanel from './ChatPanel';
 import Taboo from './Taboo';
 import TeamDisplay from './TeamDisplay';
 import AppHeader from './AppHeader';
-import TurnDisplay from './TurnDisplay';
+import TurnDisplay from './TurnDisdplay';
 
 class App extends React.Component {
   constructor(props) {
