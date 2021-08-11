@@ -1,3 +1,6 @@
+---
+labels: documentation
+---
 🐕
 
 /cc @zendesk/dingo
